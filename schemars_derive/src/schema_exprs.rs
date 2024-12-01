@@ -148,7 +148,7 @@ fn expr_for_internally_tagged_newtype_field(field: &Field) -> SchemaExpr {
         let keyword = "allOf";
         quote_spanned!(span =>
             {
-                if (#GENERATOR.settings().inline_subschemas) {
+                if #GENERATOR.settings().inline_subschemas {
                     <#ty as schemars::JsonSchema>::json_schema(#GENERATOR)
                 } else {
                     let subschema = <#ty as schemars::JsonSchema>::json_schema(#GENERATOR);
